@@ -24,6 +24,7 @@ export default class Count extends Component {
         //调用dispatch分发一个"加"的Acton
         // this.props.store.dispatch({type:INCREMENT,data:value*1})
         // this.props.store.dispatch(createIncrementAction(value*1))
+        this.props.increment(value*1)
     }
      //减法
      decrement =()=>{
@@ -34,18 +35,21 @@ export default class Count extends Component {
         // this.setState({number:number - value*1})
         // this.props.store.dispatch({type:DECREMENT,data:value*1})
         // this.props.store.dispatch(createDecrementAction(value*1))
+        this.props.decrement(value*1)
     }
     //奇数才加
     incrementOdd =()=>{
         //获取用户选择的数字
         const value = this.refs.checkNumber.value
-        //更新状态
+        //更新状态如果当前展示的是奇数,就可以加
         // const number = this.state.number
-        const number = this.props.store.getState()
+        // const number = this.props.store.getState()
+        const number = this.props.number
         if(number%2 ===1 ){
             // this.setState({number:number + value*1})
             // this.props.store.dispatch({type:INCREMENT,data:value*1})
             // this.props.store.dispatch(createIncrementAction(value*1))
+            this.props.increment(value*1)
         }
     }
     //延迟加
@@ -58,13 +62,14 @@ export default class Count extends Component {
             // this.setState({number:number + value*1})
             // this.props.store.dispatch({type:DECREMENT,data:value*1})
             // this.props.store.dispatch(createIncrementAction(value*1))
+            this.props.increment(value*1)
         }, 1000);
     }
     
     render() {
         return (
             <div>
-                <h2>当前计数为:xxx</h2>
+                <h2>当前计数为:{this.props.number}</h2>
                 <select ref="checkNumber">
                     <option value="1">1</option>
                     <option value="2">2</option>
