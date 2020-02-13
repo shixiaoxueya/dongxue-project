@@ -5,7 +5,7 @@
 //applyMiddleware一个中间件 用来执行thunk
 import {createStore,applyMiddleware} from 'redux'
 //引入reducer 用于操作状态
-import countReducer from '../redux/reducers/count_reducer'
+import countReducer from './count_reducer'
 
 
 //引入redux-thunk用于异步编程

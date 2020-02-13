@@ -20,7 +20,7 @@ connect方法的作用
 //引入方法
 import {createDecrementAction,
     createIncrementAction,
-    createIncrementAsyncAction} from '../redux/action-creators/count-action-creator.js'
+    createIncrementAsyncAction} from '../redux/count-action-creator'
 // import { createRenderer } from 'react-dom/test-utils'
 
 
