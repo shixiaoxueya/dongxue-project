@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Form, Icon, Input, Button } from 'antd';
 import logo from './img/logo.png'
-import  axios from 'axios'
 import './css/login.less'
 const {Item} = Form
 
@@ -28,15 +27,10 @@ class Login extends Component {
     //响应表单提交
     handleSubmit = (event) =>{
         event.preventDefault()
-                        
-        this.props.form.validateFields((err,values) => {
+
+        this.props.form.validatorFields((err,value) => {
             if (!err) {
-                const {username,password} = values
-                // console.log('发送了网络请求',values)   
-                axios.post('http://localhost:3000/login',`username=${username}&password=${password}`).then(
-                    (response)=>{console.log(response.data)},
-                    (error)=>{console.log(error)}
-                )
+                console.log('发送了网络请求',value)                
             }
         })
     }
