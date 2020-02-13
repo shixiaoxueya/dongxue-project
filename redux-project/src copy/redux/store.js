@@ -8,7 +8,7 @@ import {createStore,applyMiddleware} from 'redux'
 // import countReducer from '../redux/reducers/count_reducer'
 
 //引入reducer汇总
-import reducer from '../redux/reducers/index'
+import reducer from './reducers/index'
 
 
 

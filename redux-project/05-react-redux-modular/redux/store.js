@@ -15,9 +15,6 @@ import reducer from '../redux/reducers/index'
 //引入redux-thunk用于异步编程
 import thunk from 'redux-thunk'
 
-//引入composeWithDevTools   使用redux开发者工具  用于调试redux代码    
-import {composeWithDevTools} from 'redux-devtools-extension'
-
 //调用createStore  必须传入一个reducer
 
-export default createStore(reducer,composeWithDevTools(applyMiddleware(thunk)))
+export default createStore(reducer,applyMiddleware(thunk))

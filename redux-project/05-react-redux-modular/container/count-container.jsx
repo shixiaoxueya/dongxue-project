@@ -29,8 +29,13 @@ import {createDecrementAction,
 export default connect(
     // ()=>({a:1}),//这个函数必须返回一个对象，该对象的key作为props属性的key，该对象的value作为props属性的value
     // ()=>({})//这个函数必须返回一个对象，该对象的key作为props属性的key，该对象的value作为props属性的value
-    state=>({number:state}),//传递(映射)状态给UI组件                             
-   
+    // state=>({number:state}),//传递(映射)状态给UI组件  //组件公用的时候state拿到的不只是number
+
+    state => ({
+        number:state.number,
+        persons:state.persons
+    }),
+
    // dispatch=>({                                                               //回调函数
         // increment:(value)=>{dispatch(createIncrementAction(value))},
         // decrement:(value)=>{dispatch(createDecrementAction(value))},
