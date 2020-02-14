@@ -1,6 +1,6 @@
 import React, { Component } from  'react'
-import Container from './container/count-container'
-import PersonContainer from './container/person-container'
+import Container from './container/count'
+import PersonContainer from './container/person'
 
 export default class App extends Component {
   render(){
