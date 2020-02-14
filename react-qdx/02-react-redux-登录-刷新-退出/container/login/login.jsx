@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
-import {Form, Icon, Input, Button } from 'antd';
+import {Form, Icon, Input, Button, message } from 'antd';
 import logo from './img/logo.png'
-import  axios from 'axios'
+// import  myAxios from '../../api/myAxios'
 import './css/login.less'
+import {reqLogin} from '../../api/index'
+//引入redux相关的配置
+import {connect} from 'react-redux'
+import {createSavrUserInfoAction} from '../../redux/actions/login'
+import {Redirect} from 'react-router-dom'
+
+
+
+
 const {Item} = Form
+
+
 
 class Login extends Component {
 
@@ -28,21 +39,44 @@ class Login extends Component {
     //响应表单提交
     handleSubmit = (event) =>{
         event.preventDefault()
-                        
-        this.props.form.validateFields((err,values) => {
+                        //为了下面的await添加的
+        this.props.form.validateFields(async(err,values) => {
             if (!err) {
-                const {username,password} = values
+                // const {username,password} = values
                 // console.log('发送了网络请求',values)   
-                axios.post('http://localhost:3000/login',`username=${username}&password=${password}`).then(
-                    (response)=>{console.log(response.data)},
-                    (error)=>{console.log(error)}
-                )
+                /*  myAxios.post('http://localhost:3000/login',values).then(
+                    (response)=>{
+                        console.log("请求成功的回调",response)
+                        // const status = response.status
+                        // const msg = response.msg 
+
+                        const {status} = response
+                        if (status === 0) alert("登陆成功");
+                            else alert("登录失败")
+                    }
+                    // (error)=>{console.log("请求失败的回调",error)}  失败放在了相应拦截器里面
+                )*/
+                //只会返回成功的实例 可以用await
+                let result = await reqLogin(values)
+                const {status,data,msg} = result
+                if (status === 0) {
+                    message.success('登录成功')
+                    //向redux中保存用户信息
+                    this.props.saveUserInfo(data)
+                    //跳转到admin页面
+                    this.props.history.replace('/admin')
+                }else{
+                    // message.error(msg)
+                    message.warning(msg)
+                }
             }
         })
     }
     render() {
         const { getFieldDecorator } = this.props.form;
         // console.log(this.props)
+        const {isLogin} = this.props.userInfo
+        if(isLogin) return <Redirect to="/admin"/> 
         return (
             <div id="login">
                 <div className ="header">
@@ -96,4 +130,10 @@ class Login extends Component {
     }
 }
 
-export default Form.create()(Login);
+// export default Form.create()(Login);
+
+
+export default connect(
+    (state)=>({userInfo:state.userInfo}),//用于映射状态
+    {saveUserInfo:createSavrUserInfoAction},//用于映射操作状态的方法
+)(Form.create()(Login))
