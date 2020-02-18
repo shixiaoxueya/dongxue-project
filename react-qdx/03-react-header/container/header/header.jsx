@@ -81,7 +81,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="header-top">
-                    <Button size="samll" onClick={this.fullscreen}>
+                <Button size="small" onClick={this.fullscreen}>
                         <Icon type= {this.state.isFull ? 'fullscreen-exit':'fullscreen'}/>
                     </Button>
                     <span>欢迎:{this.props.userInfo.user.username}</span>

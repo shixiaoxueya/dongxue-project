@@ -20,7 +20,7 @@ export default function(ReceiveComponent){
         render(){
             const {isLogin} = this.props
             const {pathname} = this.props.location
-            if (!isLogin && pathname === '/admin') {
+            if (!isLogin && pathname !== '/login') {
                 return <Redirect to='/login'/>
             }
             if (isLogin && pathname === '/login') {
