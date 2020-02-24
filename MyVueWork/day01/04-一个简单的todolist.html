@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一个简单的todolist 体现数据驱动</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入你的姓名" v-model="val">
+        <button @click="handleClick">add</button>
+
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            //model层
+            data:{
+                list:["芳芳","辰哥","白白","前前","组长","付昱"],
+                val:"",
+                // data中的所有数据都是会做响应式的!!!!
+                // 没有必要给函数做响应式!!! 函数是用来执行一段逻辑的!!!
+                //函数的值 我们在整个开发过程中 都不会去改变!!! 所以我们不能把函数放在data中
+                //可是vue是支持在data定义函数的!!  函数中this执行是window
+                // 综上所述 !!  我们不应该在data中定义函数
+            },
+            methods:{
+                handleClick(){
+                    this.list.push(this.val);
+                    this.val=""
+                }
+            }
+        })
+    </script>
+</body>
+</html>

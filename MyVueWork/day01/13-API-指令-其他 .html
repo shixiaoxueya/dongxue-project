@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他</title>
+</head>
+<body>
+    <div id="app">
+        <div v-pre>
+            <!-- 纯净态页 不需要vue解析-->
+            {{obj.name}}
+            <span>123</span>
+        </div>
+
+        <div v-cloak>
+            {{obj.name}}
+        </div>
+
+        <div v-once>
+            <span>
+                {{obj.name}}
+            </span>
+        </div>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                list:["芳芳","辰哥","白白","前前","组长","付昱"],
+                obj:{
+                    name:"冬雪",
+                    age:"18",
+                    wife:"苏菲浅",
+                    son:"飞鹰"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

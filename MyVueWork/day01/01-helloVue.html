@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    
+</head>
+<body>
+    <!-- vue层 -->
+    <div id="app">
+        {{msg}}
+    </div>
+    <!-- 这个脚本会在window上注册一个全局变量,Vue函数 -->
+    <script src="../js/vue.js"></script>
+    <script>
+        //vm:vm层
+        var vm = new Vue({
+            el:"#app",
+            // modle层
+            data:{
+                msg:"在家一个月 要疯了"
+            }
+        })
+    </script>
+</body>
+</html>

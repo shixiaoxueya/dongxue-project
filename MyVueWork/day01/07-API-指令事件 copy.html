@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令事件</title>
+    <style>
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+        .wrap{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .text{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+        .text1{
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+        .gray{
+            width: 50px;
+            height: 50px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+         <!-- <div class="inner" v-on:click="handelClick"></div>
+        <div class="inner" v-on:mouseover="handelClick"></div>
+         v-on:可以省略成@  -->
+        <div class="wrap" @click.self="handelWrap">
+            <div class="inner" @click.self="handelInner">
+                <div class="text"  @click.self="handelText"></div>
+            </div>
+        </div>
+
+        <a href="http://www.atguigu.com/" @click.prevent="handelA">尚硅谷</a>
+        <br>
+        <input type="text" @keydown.13="hadelKeydown"><br>
+  
+        <input type="text" @keydown.enter="hadelKeydown"><br>
+        <input type="text" @keydown.once="hadelKeydown"><br>
+        <div class="text1" @click.left="handelText1"></div><br>
+        <div class="text1" @click.right="handelText2"></div><br>
+        <div class="text1" @click.middle="handelText3"></div><br>
+
+        <!-- 参数 -->
+        <div class="gray" @click="handelGray(123,$event)"></div>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+
+        new Vue({
+            el:"#app",
+            methods:{
+                handelWrap(){
+                    console.log("handelWrap");
+                },
+                handelInner(){
+                    console.log("handelInner");
+                },
+                handelA(){
+                    console.log("handelA");
+                },
+                handelText(){
+                    console.log("handelText");
+                },
+                hadelKeydown(){
+                    console.log("hadelKeydown");
+                },
+                handelText1(){
+                    console.log("handelText1");
+                },
+                handelText2(){
+                    console.log("handelText2");
+                },
+                handelText3(){
+                    console.log("handelText3");
+                },
+                handelGray(num,ev){
+                    console.log(num,ev);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

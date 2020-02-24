@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue编码的注意点</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        /* 
+            所有需要在界面上展现的数据应该都要在data中定义一遍
+            在使用vue开发的过程中,我们所有的编码一般情况下是不会写在配置对象外部的
+            事件对应的回调函数应该注册在配置对象的method属性中
+         */
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"出去逛逛"
+            },
+            //基本上在vue配置对象中的所有函数,他们的this都是指向vm实例对象
+            //mounted是在vue整个初始化过程中肯定会被调用的一个函数
+            mounted(){
+                setTimeout(()=>{
+                    this.msg="再等等"
+                },2000)
+            }
+        })
+
+        /* setTimeout(()=>{
+            wm.msg="再等等"
+        },2000) */
+    </script>
+</body>
+</html>

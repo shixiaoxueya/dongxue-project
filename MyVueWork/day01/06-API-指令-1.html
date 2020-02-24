@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令-1</title>
+</head>
+<body>
+    <div id="app">
+        <span v-text="msg"></span>
+        <br>
+        <!-- <span>---{{msg}}---</span> 插值可以自由加东西在前后 -->
+        <!-- <div v-html="htmlStr"></div> 可以渲染标签 -->
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"不要着急",
+                htmlStr:"<strong>不要着急</strong>"
+            }
+        })
+
+    </script>
+</body>
+</html>

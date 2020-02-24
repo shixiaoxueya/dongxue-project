@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式2</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+       
+        <span :style="style" v-text="msg"></span><br>
+       
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"且行且珍惜",
+                /* style:{
+                    color: "darkorange",
+                    fontSize:"40px"
+                } */
+                style:[
+                    {color: "darkorange"},
+                    {fontSize:"40px"}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue的四大特征</title>
+</head>
+<body>
+    <!-- vue层 -->
+    <div id="app">
+        <!-- {{msg}}  {{msg2}} -->
+        <!-- 数据双向流   表单标签  我们就有能力再view层得到数据 -->
+        <!-- model到view -->
+        <input type="text" v-model="val">
+
+        <p>
+            {{val}}
+        </p>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        /* 
+            声明式办成
+                区别dom编程
+            响应式数据(数据单向流  model层向vue层)
+                vue data对象的所有属性都会转给对应的vue实例
+            数据双向流(model-->view  view-->model)
+                v-model实现了数据双向流
+            数据驱动
+                
+
+
+         */
+
+        var vm = new Vue({
+            el:"#app",
+            // model层
+            //项目中用到的所有需要再见面上展现的数据,都需要再data配置中初注册一下
+            data:{
+                msg:"想出去玩",
+                msg2:"",
+                val:"请输入数据"
+            }
+        })
+        /* 响应式数据
+        setTimeout(()=>{
+            vm.msg="再等一等吧"
+        },3000) */
+
+        //要给初始值
+        setTimeout(()=>{
+            vm.msg2="再等一等吧"
+        },3000)
+    </script>
+</body>
+</html>
